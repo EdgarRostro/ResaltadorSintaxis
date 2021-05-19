@@ -1,3 +1,12 @@
+#|  
+{}  {|}
+[]  \\[|]
+, : \\: \\,
+"string": "string2" ^"["\\w,\\s-]+
+8127
+false, true, null
+|#
+
 #lang racket
 
 (provide main)
@@ -8,7 +17,24 @@
     (file->lines head)
     (string-append (car (regexp-match #px"^[\\w,\\s-]+" in-file-path)) ".html")
     #:exists 'truncate)
-  )
+
+  ; While loop eof??
+  (cond
+    [(regexp-match? #rx"{" (file->string in-file-path)) 
+      (display-to-file 
+        (car (regexp-match #rx"{" (file->string in-file-path)))
+        (string-append (car (regexp-match #px"^[\\w,\\s-]+" in-file-path)) ".html")
+        #:exists 'append)]
+    [(regexp-match? #rx"}" (file->string in-file-path)) 
+      (display-to-file 
+        (car (regexp-match #rx"}" (file->string in-file-path)))
+        (string-append (car (regexp-match #px"^[\\w,\\s-]+" in-file-path)) ".html")
+        #:exists 'append)]
+    [(regexp-match? #rx"," (file->string in-file-path)) 
+      (display-to-file 
+        (car (regexp-match #rx"," (file->string in-file-path)))
+        (string-append (car (regexp-match #px"^[\\w,\\s-]+" in-file-path)) ".html")
+        #:exists 'append)]))
 
 ; (define (main in-file-path)
 ;   " Receives the names of the files to read and write "
