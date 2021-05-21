@@ -1,0 +1,62 @@
+body{
+    background-color: #272822;
+    font: normal 16px Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+
+    margin: 20px;
+    margin-top: 30px;
+}
+
+.Parentesis{
+    color: #A6E22E ;
+    margin: 10px;
+    padding: 10px;
+}
+
+.Corchetes{
+    color: #E6DB74 ;
+    margin: 10px;
+    padding: 10px;
+}
+
+.Coma{
+    color: #66D9EF;
+    margin: 10px;
+    padding: 10px;
+}
+
+.DosP{
+    color: #AE81FF;
+    margin: 10px;
+    padding: 10px;
+}
+
+.Numero{
+    color: #FD971F;
+    margin: 10px;
+    padding: 10px;
+}
+
+.Bool{
+    color: #E69F66;
+    margin: 10px;
+    padding: 10px;
+}
+
+.Text1{
+    color: rgb(206, 71, 71);
+    margin: 10px;
+    padding: 10px;
+}
+
+.Text{
+    color: rgb(255, 122, 195);
+    margin: 10px;
+    padding: 10px;
+}
+
+.Espacio{
+    color: rgb(48, 189, 135);
+    margin: 10px;
+    padding: 10px;
+}
