@@ -1,10 +1,7 @@
 #|  
-{}  {|}     ok
-[]  \\[|]   ok
-, : \\: \\, ok
-"string": "string2"  ^\\"[\\w,\\s-]+\\" ok 
-8127    \\d+ ok  
-false, true, null  false true null
+Rafael Eduardo Rios Garcia 	A01028722
+Edgar Ivan Rostro Morales 	A01029036
+Ivan David Manzano Hormaza 	A01029111
 |#
 
 #lang racket
