@@ -12,4 +12,4 @@
   
  > - Calcula la complejidad de tu algoritmo basada en el número de iteraciones y contrástala con el tiempo obtenido en el punto 7.
  >>La complejidad del algoritmo es de O(n^2) ya que el código itera por cada elemento separado mas de una vez. Sin  embargo, el código no es tan eficiente como podría ser, ya que  cada vez que encontramos un elemento abrimos el archivo, copiamos el texto, y cerramos el archivo.
- >>el tiempo de ejecucion es de ‘0 segundos’ para un archivo con ‘0  tokens’. El tiempo que tarda el programa en generar los archivos parece crecer de manera linear en relacion con el tamaño del archivo, por lo que se puede deducir que aunque el codigo no es el mas eficiente su complejidad no es tan avanzada.
+ >>El tiempo que tarda el programa en generar los archivos parece crecer de manera linear en relacion con el tamaño del archivo, por lo que se puede deducir que aunque el codigo no es el mas eficiente su complejidad no es tan avanzada.
