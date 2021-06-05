@@ -8,7 +8,41 @@ Ivan David Manzano Hormaza 	A01029111
 
 (provide main)
 
-(define (main in-file-path)
+(define (main directory cores)
+  (let*
+  ([bloque (ceiling (/ (length (directory-list directory)) cores))]
+  [filel (makelstfiles bloque directory)])
+  (define futures (map make-future filel))
+  (map touch futures))
+)
+
+(define (makelstfiles bloque directory)
+  (let loop 
+    ([fileslst empty] 
+    [files (extractfiles directory)])
+    (if (< (length files) bloque)
+      (append fileslst (list files))
+      (let-values ([(primerb resto) (split-at files bloque)])          
+        (loop (append fileslst (list primerb)) resto)
+      )
+    )
+  )
+) 
+
+(define (extractfiles directory)
+  (filter (lambda (_file)
+   (regexp-match? #px"\\.json$" _file)) (map (lambda (file_) (string-append directory "/" file_)) (map path->string (directory-list directory))))
+)
+
+(define (make-future lstfiles)
+  (future 
+    (lambda()
+      (map sintax lstfiles)
+    )
+  )
+)
+
+(define (sintax in-file-path)
   (let loop ([file (file->string in-file-path)] [stringTotal (file->string "html.txt")])
     (if (zero? (string-length file))
       (writeFile stringTotal in-file-path)
@@ -45,11 +79,6 @@ Ivan David Manzano Hormaza 	A01029111
       (loop (substring file (string-length (car match))) (createBody stringTotal (cadr match) (car match))))
     )
   )
-)
-
-(define (extractfiles directory)
-  (filter (lambda (_file)
-   (regexp-match? #px"\\.json$" _file)) (map (lambda (file_) (string-append directory "/" file_)) (map path->string (directory-list directory))))
 )
 
 (define (createBody stringTotal tipo token)
